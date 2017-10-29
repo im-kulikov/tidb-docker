@@ -1,3 +1,4 @@
+# Builder image
 FROM golang:latest as builder
 
 RUN set -x \
@@ -9,10 +10,12 @@ RUN set -x \
     && cd /go/src/github.com/pingcap/tidb/ \
     && make
 
+RUN chmod +x /go/src/github.com/pingcap/tidb/bin/tidb-server
+
 # Executable image
 FROM scratch
 
-COPY --from=builder /go/src/github.com/pingcap/tidb/tidb-server /tidb-server
+COPY --from=builder /go/src/github.com/pingcap/tidb/bin/tidb-server /tidb-server
 
 WORKDIR /
 
