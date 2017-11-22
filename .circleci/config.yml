@@ -1,9 +1,11 @@
 version: 2
 jobs:
   build:
+    docker:
+      - image: docker:17.10.0-ce-git
     steps:
       - setup_remote_docker:
-          version: 17.09.0-ce
+          version: 17.10.0-ce
       - checkout
       - run:
           command: docker build -t imkulikov/tidb .
