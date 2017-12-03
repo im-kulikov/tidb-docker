@@ -4,7 +4,7 @@ FROM golang:latest as builder
 RUN set -x \
     && mkdir -p /go/src/github.com/pingcap/tidb/ \
     && cd /go/src/github.com/pingcap/tidb/ \
-    && git clone --depth 1 --branch v1.0.2 https://github.com/pingcap/tidb.git .
+    && git clone --depth 1 --branch v1.0.3 https://github.com/pingcap/tidb.git .
 
 RUN set -x \
     && cd /go/src/github.com/pingcap/tidb/ \
